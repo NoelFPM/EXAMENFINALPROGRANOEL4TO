@@ -3,73 +3,83 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private CharacterController controller;
+    private Vector3 velocity;
 
-    private float movX;
-    private float movZ;
+    [Header("Configuración de Velocidad")]
+    [SerializeField]
+    [Range(1f, 20f)]
+    private float moveSpeed = 5f; 
 
     [SerializeField]
-    [Range(0f, 100)]
-    private float movSpeed;
+    [Range(1f, 20f)]
+    private float sprintSpeed = 10f; 
 
     [SerializeField]
-    [Range(0f, 100)]
-    private float jumpSpeed;
+    [Range(1f, 10f)]
+    private float jumpHeight = 2.5f;
 
     [SerializeField]
-    private Vector3 VelocitY;
+    private float gravity = -9.81f;
 
-    [SerializeField]
-    private float gravedad = -9.8f;
-
-    [SerializeField]
-    private bool isGrounded;
+    [Header("Chequeo de Suelo")]
     [SerializeField]
     private Transform groundCheck;
     [SerializeField]
-    private float radio;
+    private float groundDistance = 0.4f;
     [SerializeField]
-    private LayerMask whatIsGround;
+    private LayerMask groundMask;
+
+    private bool isGrounded;
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
-        groundCheck = transform.GetChild(2);
     }
 
     private void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, radio, whatIsGround);
+       
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        VelocitY.y += gravedad * Time.deltaTime;
-
-        if(isGrounded && VelocitY.y <= 0)
+        if (isGrounded && velocity.y < 0)
         {
-            VelocitY.y = 0;
+            velocity.y = -2f;
         }
 
+        velocity.y += gravity * Time.deltaTime;
+
+
+        
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            AudioManager.Instance.Play("Jump");
-            VelocitY.y = Mathf.Sqrt(jumpSpeed * gravedad * -2);
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+
+
         
-        if (Input.GetKeyDown(KeyCode.LeftShift) )
+        float currentSpeed = moveSpeed;
+
+        
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            VelocitY.y = -1 * (Mathf.Sqrt(jumpSpeed * gravedad * -2));
+            currentSpeed = sprintSpeed;
         }
 
-            controller.Move(VelocitY * Time.deltaTime);
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+     
+        Vector3 moveDirection = transform.right * x + transform.forward * z;
+
+      
+        moveDirection *= currentSpeed;
 
 
-        movX = Input.GetAxis("Horizontal") * movSpeed * Time.deltaTime;
-        movZ = Input.GetAxis("Vertical") * movSpeed * Time.deltaTime;
+       
+        Vector3 finalMovement = moveDirection;
+        finalMovement.y = velocity.y;
 
-        // Es un vector que toma en cuenta la posicion local de el objeto
-        Vector3 movimiento = transform.right * movX + transform.forward * movZ;
-
-        // Es un vector que toma en cuenta la posicion global de el objeto
-        //Vector3 movimiento = new(movX,0,movZ);
-
-        controller.Move(movimiento);
+       
+        controller.Move(finalMovement * Time.deltaTime);
     }
 }
