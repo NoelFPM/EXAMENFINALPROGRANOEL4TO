@@ -6,20 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MedioTermino/Title.unity
-    guid: 1984cc921ff109946a16a2042bfbaeca
+    path: Assets/Scenes/5toMedioTitle.unity
+    guid: a24e442c391a8be44967986f2b314c59
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: b2b7f33f44e0a2842b8f6105100d01ac
-  - enabled: 1
-    path: Assets/Scenes/MedioTermino/Victory.unity
-    guid: dac0a6159bfe37d44ad9f5dcb506e6d3
-  - enabled: 1
-    path: Assets/Scenes/MedioTermino.unity
-    guid: a93b9354c98093045b75a6221691a67c
-  - enabled: 1
-    path: Assets/Scenes/MedioTermino/Credits.unity
-    guid: 6941c67d414c0b346a0e32648defa0db
+    path: Assets/Scenes/5toMedio.unity
+    guid: a0dc85f2201a28c45bdd72f0b28f1987
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0

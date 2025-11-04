@@ -64,6 +64,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Miku
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db6d0a9ac2579d146aaac462b76f4dd6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db6d0a9ac2579d146aaac462b76f4dd6, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -77,6 +85,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: db6d0a9ac2579d146aaac462b76f4dd6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5718646107160273377}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: db6d0a9ac2579d146aaac462b76f4dd6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5008245856556557837}
   m_SourcePrefab: {fileID: 100100000, guid: db6d0a9ac2579d146aaac462b76f4dd6, type: 3}
 --- !u!1 &6925236155807517529 stripped
 GameObject:
@@ -102,10 +113,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.16357012
-  m_Height: 0.95162255
+  m_Radius: 0.36548892
+  m_Height: 1.089039
   m_Direction: 1
-  m_Center: {x: 0.011017201, y: 0.47575778, z: -0.034447875}
+  m_Center: {x: -0.009641452, y: 0.504173, z: -0.03444784}
 --- !u!195 &8735858789063182844
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -155,3 +166,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &5008245856556557837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6925236155807517529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3105c5b5b72600419387254f7a8a842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  shield: 0
+  isDead: 0
+  patrolSpeed: 2
+  chaseSpeed: 4
+  patrolWaitTime: 3
+  patrolPoints: []

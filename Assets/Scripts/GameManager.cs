@@ -1,55 +1,62 @@
-using System.Collections;
 using UnityEngine;
+using TMPro;
 using UnityEngine.SceneManagement;
 
-[System.Serializable]
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    [Header("Configuracion del Juego")]
+    [SerializeField] private int enemiesToDefeat = 10;
+    [SerializeField] private TextMeshProUGUI enemiesText;
+    [SerializeField] private TextMeshProUGUI objectiveText;
+    [SerializeField] private TextMeshProUGUI gameOverText;
 
-    public int dinero;
-    public bool active = true;
-    public int collect;
+    private int enemiesDefeated = 0;
+    private bool gameCompleted = false;
 
-    public float posX;
-    public float posY;
-    public float posZ;
-
-    private Transform player;
-
-    public string nivel;
-    public string nombreGuardado;
-
-    private void Awake()
+    private void Start()
     {
-        if (Instance == null)
+        UpdateUI();
+        if (gameOverText != null)
+            gameOverText.gameObject.SetActive(false);
+    }
+
+    public void EnemyDefeated()
+    {
+        if (gameCompleted) return;
+
+        enemiesDefeated++;
+        UpdateUI();
+
+        if (enemiesDefeated >= enemiesToDefeat)
         {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
+            GameCompleted();
         }
     }
 
-    public void GuardadDatos()
+    private void UpdateUI()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        posX = player.position.x;
-        posY = player.position.y;
-        posZ = player.position.z;
-         
-        nivel = SceneManager.GetActiveScene().name;
+        if (enemiesText != null)
+            enemiesText.text = "Enemigos Derrotados: " + enemiesDefeated + "/" + enemiesToDefeat;
+
+        if (objectiveText != null)
+            objectiveText.text = "Objetivo: Derrotar " + enemiesToDefeat + " enemigos";
     }
 
-    public IEnumerator MoverJugador()
+    private void GameCompleted()
     {
-        yield return new WaitForSeconds(0.1f); // espera breve para que cargue la escena
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        CharacterController ctrl = player.GetComponent<CharacterController>();
-        ctrl.enabled = false;
-        player.transform.position = new Vector3(posX, posY, posZ);
-        ctrl.enabled = true;
+        gameCompleted = true;
+        if (gameOverText != null)
+        {
+            gameOverText.text = "¡VICTORIA!\nVolviendo al menú...";
+            gameOverText.gameObject.SetActive(true);
+        }
+
+        // Volver al menú 
+        Invoke("ReturnToMenu", 3f);
+    }
+
+    private void ReturnToMenu()
+    {
+        SceneManager.LoadScene("5toMedioTitle");
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 718387981424483252}
   - component: {fileID: 5969858604300775202}
   - component: {fileID: 1461618315649824219}
-  - component: {fileID: 2643541054893306056}
+  - component: {fileID: 3901550586502808993}
   m_Layer: 0
   m_Name: Bala
   m_TagString: Untagged
@@ -132,12 +132,12 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2643541054893306056
+--- !u!114 &3901550586502808993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +146,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8694617884375571555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad98abc13098ed4582dd99471b24564, type: 3}
+  m_Script: {fileID: 11500000, guid: e0b6f674f0e97c94eb046146bb552181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefob: {fileID: 0}
