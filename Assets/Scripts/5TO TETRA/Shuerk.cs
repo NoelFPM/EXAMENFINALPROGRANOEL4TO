@@ -149,11 +149,11 @@ public class Shuerk : MonoBehaviour
 
         //notifica al gamenanager que un enemigo fue derrotado
        
-        GameManager gameManager = FindFirstObjectByType<GameManager>();
-        if (gameManager != null)
-        {
-            gameManager.EnemyDefeated();
-        }
+        //GameManager gameManager = FindFirstObjectByType<GameManager>();
+        //if (gameManager != null)
+        //{
+        //    gameManager.EnemyDefeated();
+        //}
 
         // devolver al pool usando el Spawn manager
         if (spawnManager != null)

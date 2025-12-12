@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManeager : MonoBehaviour
 {
     [Header("Configuracion del Juego")]
     [SerializeField] private int enemiesToDefeat = 10;

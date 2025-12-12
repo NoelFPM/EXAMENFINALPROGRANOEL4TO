@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/5toMedioTitle.unity
-    guid: a24e442c391a8be44967986f2b314c59
+    path: Assets/Scenes/EXAMENFINAL5TO/TITLEFT.unity
+    guid: 49dc6c5511e9fa44083d5827d4aaea34
   - enabled: 1
-    path: Assets/Scenes/5toMedio.unity
-    guid: a0dc85f2201a28c45bdd72f0b28f1987
+    path: Assets/Scenes/EXAMENFINAL5TO/Game.unity
+    guid: f965a8811ed91e14fb41f3332237ceef
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0
